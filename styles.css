@@ -1,0 +1,144 @@
+
+body.dark-theme {
+  background-color: #121212;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1, .tagline {
+  margin: 0;
+  color: #00bcd4;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+nav .nav-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #00bcd4;
+}
+
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  color: #4db6ac;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+
+a {
+  color: #80deea;
+}
+
+a:hover {
+  color: #26c6da;
+}
+
+footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+}
+
+.whatsapp-button {
+  display: inline-block;
+  margin-top: 10px;
+  color: #25d366;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ph {
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #00bcd4;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact-form button:hover {
+  background-color: #26c6da;
+}
+
+.truck-animation img {
+  width: 100px;
+  animation: moveTruck 3s ease-in-out infinite alternate;
+  display: block;
+  margin: 20px auto;
+}
+
+@keyframes moveTruck {
+  from { transform: translateX(-10px); }
+  to { transform: translateX(10px); }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  main {
+    padding: 0 10px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+}

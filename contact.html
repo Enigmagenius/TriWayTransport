@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - TriWayTransport</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="triway_favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Contact TriWayTransport for support and inquiries." />
+  <meta name="keywords" content="TriWayTransport, contact, support, inquiries" />
+  <meta name="author" content="TriWayTransport Team" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+</head>
+<body class="dark-theme">
+  <header>
+    <img src="TLogo.png" alt="TriWayTransport Logo" class="logo" />
+    <h1>Contact TriWayTransport</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="Main.html">Help</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+<!-- INPUT IN FORM:  onsubmit="return submitToGoogleSheet(event)"   -->
+  <main>
+    <section>
+      <h2>Reach Out to Us</h2>
+      <p>If you have any questions or need support, we’re here to help.</p>
+      <p>Email: <a href="mailto:shalomt2019@gmail.com">shalomt2019@gmail.com</a></p>
+      <form action="https://formspree.io/f/xvgqapyk" method="POST" class="contact-form" >
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="form-response" style="margin-top: 10px;"></div>
+      <p>Alternatively, you can reach us via WhatsApp:</p>
+      <a href="https://wa.me/27661746494" class="whatsapp-button" target="_blank">
+        <i class="ph ph-whatsapp-logo"></i> Chat with Us
+      </a>
+    </section>
+
+    <section>
+      <h2>Find Us</h2>
+      <div id="map" style="height: 300px; width: 100%;"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 TriWayTransport. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function initMap() {
+      const location = { lat: -33.0153, lng: 27.9116 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: location,
+      });
+      new google.maps.Marker({ position: location, map: map });
+    }
+    window.onload = initMap;
+    function submitToGoogleSheet(e) {
+      e.preventDefault();
+      const form = e.target.closest("form");
+      const response = document.getElementById("form-response");
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbwpA8fyyNetwZTbUq5-oYbkryVRP_yMQGDgJLJdrsoof4eDUZqYs5yRvhOFgMH_QjhIug/exechttps://script.google.com/macros/s/AKfycbwpA8fyyNetwZTbUq5-oYbkryVRP_yMQGDgJLJdrsoof4eDUZqYs5yRvhOFgMH_QjhIug/exec", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json"
+
+        },
+        body: JSON.stringify(data)
+      })
+
+      .then(() => {
+        response.innerText = "Thank you! Your message has been sent.";
+        window.location.href = "thank-you.html";
+      })
+      .catch((error) => {
+        console.error("Submission error:", error);
+        response.innerText = "Oops! Something went wrong. Please try again.";
+      });
+
+
+      return false;
+    }
+  
+  </script>
+</body>
+</html>
